@@ -10,23 +10,9 @@ namespace UAS
             while (loop == true)
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Blue;
-                
-                string judul = "Uler Tangga";
-                Console.SetCursorPosition((Console.WindowWidth - judul.Length) / 2, Console.CursorTop);
-                Console.WriteLine(judul);
-                Console.ResetColor();
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                string garis = "============================================================================================";
-                Console.SetCursorPosition((Console.WindowWidth - garis.Length) / 2, Console.CursorTop);
-                Console.Write(garis);
-                Console.ResetColor();
+                JUDUL();
 
-                Console.WriteLine();
-
-
-                Console.WriteLine();
                 Console.WriteLine("Pemain min 2 max 4");
                 Console.Write("Berapa pemain: ");
                 int jumlahpemain = Convert.ToInt32(Console.ReadLine());
@@ -34,6 +20,8 @@ namespace UAS
                 if (jumlahpemain < 2)
                 {
                     Console.Clear();
+                    JUDUL();
+                    
                     Console.WriteLine("Masukkan jumlah pemain yang benar!!");
                     Console.WriteLine("Tekan enter untuk melanjutkan");
                     Console.ReadKey();
@@ -41,6 +29,8 @@ namespace UAS
                 if (jumlahpemain > 4)
                 {
                     Console.Clear();
+                    JUDUL();
+                    
                     Console.WriteLine("Kebanyakan yang maen!!");
                     Console.WriteLine("Tekan enter untuk melanjutkan");
                     Console.ReadKey();
@@ -50,26 +40,96 @@ namespace UAS
 
                 if (jumlahpemain > 1 && jumlahpemain < 5)
                 {
+                    Console.Clear();
+                    JUDUL();
+
+                    
                     for (int i = 0; i < jumlahpemain; i++)
                     {
                         Console.Write("Masukkan nama player ke " + (i + 1) + ": ");
                         namapemain[i] = Console.ReadLine();
                     }
+
+                    Console.WriteLine();
+
+                    Console.Clear();
+
+                    Console.OutputEncoding = System.Text.Encoding.Unicode;
+                    string[] KARAKTER = new string[11];
+                    KARAKTER[1] = "\u25A0";
+                    KARAKTER[2] = "\u2660";
+                    KARAKTER[3] = "\u2665";
+                    KARAKTER[4] = "\u25B2";
+                    KARAKTER[5] = "\u2666";
+                    KARAKTER[6] = "\u2663";
+                    KARAKTER[7] = "●";
+                    KARAKTER[8] = "☻";
+                    KARAKTER[9] = "♫";
+                    KARAKTER[10] = "☼";
+
+                    
+                    string[] karakterpemain = new string[5];
+                    int pilihkarakter = 0;
+
+                    for (int i = 0; i < jumlahpemain; i++)
+                    {
+                        JUDUL();
+                        
+
+                        Console.WriteLine("Pilih karakter " + namapemain[i]);
+
+                        for (int k = 1; k <= 10; k++)
+                        {
+                            Console.Write((k) + "." + KARAKTER[k] + "  ");
+                        }
+
+                        Console.WriteLine();
+
+                        Console.Write("Karakter pilihan " + namapemain[i] + ": ");
+                        pilihkarakter = Convert.ToInt32(Console.ReadLine());
+
+                        karakterpemain[i] = KARAKTER[pilihkarakter];
+
+                        Console.Clear();
+                    }
+
+                    JUDUL();
+                    
+
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    string maribermain = "MARI KITA BERMAINN!!";
+                    Console.SetCursorPosition((Console.WindowWidth - maribermain.Length) / 2, Console.CursorTop);
+                    Console.Write(maribermain);
+                    Console.ResetColor();
+                    Console.ReadKey();
+
+
+
                 }
                 
-                Console.Clear();
-
-                Console.WriteLine("Tekan enter untuk kocok dadu!");
-                Console.ReadKey();
-
-                Dadu();
-
-                Console.WriteLine("Tekan enter untuk melanjutkan!!");
-                Console.ReadKey();
+                
+                
 
                 
             }
             
+        }
+
+        static void JUDUL()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            string judul = "Uler Tangga";
+            Console.SetCursorPosition((Console.WindowWidth - judul.Length) / 2, Console.CursorTop);
+            Console.WriteLine(judul);
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            string garis = "============================================================================================";
+            Console.SetCursorPosition((Console.WindowWidth - garis.Length) / 2, Console.CursorTop);
+            Console.Write(garis);
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         static void Dadu()
